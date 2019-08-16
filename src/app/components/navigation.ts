@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export interface Item {
+interface Item {
     url: string;
     name: string;
 }
