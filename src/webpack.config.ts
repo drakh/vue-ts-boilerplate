@@ -2,6 +2,7 @@ import * as path from "path";
 import * as webpack from "webpack";
 import * as VueLoaderPlugin from "vue-loader";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const outDir = path.join(__dirname, "../dist");
 const entry = path.join(__dirname, "app/index.ts");
@@ -45,10 +46,30 @@ const config: webpack.Configuration = {
                 },
             },
             {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true,
+                        },
+                    },
+                    {loader: "css-loader"},
+                    {loader: "sass-loader"},
+                ],
+            },
+            {
                 test: /\.css$/,
                 use: [
-                    "vue-style-loader",
-                    "css-loader",
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true,
+                        },
+                    },
+                    // {loader: "vue-style-loader"},
+                    {loader: "style-loader"},
+                    {loader: "css-loader"},
                 ],
             },
             {
@@ -69,13 +90,15 @@ const config: webpack.Configuration = {
         },
     },
     devServer: {
-        openPage: publicPath,
         lazy: false,
         filename: "[name].js",
         port: 1337,
-        contentBase: outDir,
         compress: false,
-        historyApiFallback: true,
+        historyApiFallback: {
+            rewrites: [
+                {from: /\//, to: "/dist/index.html"},
+            ],
+        },
         noInfo: false,
         hot: true,
     },
@@ -84,6 +107,10 @@ const config: webpack.Configuration = {
     plugins: [
         // make sure to include the plugin for the magic
         new VueLoaderPlugin.VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css",
+        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template,
