@@ -17,6 +17,7 @@ const config: webpack.Configuration = {
         path: outDir,
         publicPath: `/${publicPath}`,
         filename: "[name].js",
+        pathinfo: false,
     },
     module: {
         rules: [
@@ -35,6 +36,8 @@ const config: webpack.Configuration = {
                 loader: "ts-loader",
                 exclude: /node_modules/,
                 options: {
+                    transpileOnly: true,
+                    experimentalWatchApi: true,
                     appendTsSuffixTo: [/\.vue$/],
                 },
             },
