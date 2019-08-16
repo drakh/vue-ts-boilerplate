@@ -5,22 +5,23 @@
         "name": "tslint-language-service"
       }
     ],
+    "strict": true,
     "baseUrl": "./src",
-    "target": "es6",
+    "target": "es5",
     "lib": [
       "dom",
       "es2015",
       "es2017.object",
       "es2016.array.include"
     ],
-    "module":"commonjs",
+    "module": "commonjs",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": false,
-    "outDir": "dist",
-        "rootDir": "src",
+    "outDir": "build",
+    "rootDir": "src",
     "jsx": "react",
     "experimentalDecorators": true,
     "noUnusedParameters": true,
@@ -29,7 +30,11 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "typingsLocal/**/*"
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
   ]
 }

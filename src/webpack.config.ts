@@ -3,12 +3,12 @@ import * as webpack from "webpack";
 import * as VueLoaderPlugin from "vue-loader";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 
-export const outDir = path.join(__dirname, "../dist");
+const outDir = path.join(__dirname, "../dist");
 const entry = path.join(__dirname, "app/index.ts");
 const template = path.join(__dirname, "html/index.html");
 const publicPath = "dist/";
 
-const conf: webpack.Configuration = {
+const config: webpack.Configuration = {
     entry: {app: entry},
     cache: true,
     parallelism: 5,
@@ -90,5 +90,4 @@ const conf: webpack.Configuration = {
         }),
     ],
 };
-
-export default conf;
+module.exports = config;

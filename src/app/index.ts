@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export const app = new Vue({
+const app = new Vue({
     el: "#app",
     template: `
     <div>
@@ -11,3 +11,5 @@ export const app = new Vue({
         name: "Vue",
     },
 });
+
+module.exports = app;
