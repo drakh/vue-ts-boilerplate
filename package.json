@@ -51,7 +51,8 @@
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "clean": "rimraf ./dist ./build",
     "quality": "npm run clean && npm run tsunused && npm run tslint && npm run tsc",
-    "start": "npm run clean && webpack-dev-server --cache --progress --colors --open --config src/webpack.config.ts",
+    "webpack:dev": "webpack-dev-server --cache --progress --colors --open --config src/webpack.config.ts",
+    "start": "npm run clean && npm run webpack:dev",
     "build": "npm run clean && webpack  --cache --progress --colors --config src/webpack.config.ts"
   },
   "author": "",

@@ -79,3 +79,10 @@ body {
   }
 }
 
+.view {
+  background-color: #fff;
+
+  &.main {
+    color: #0f0;
+  }
+}

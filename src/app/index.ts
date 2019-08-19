@@ -5,6 +5,7 @@ import { NotFound } from "./components/not-found";
 import { Hello } from "./components/hello";
 import { Foo } from "./components/foo";
 import HelloVue from "./components/hello.vue";
+
 import "../scss/main.scss";
 
 const router = new VueRouter({
@@ -21,7 +22,7 @@ const router = new VueRouter({
 
 Vue.use(VueRouter);
 new Vue({
-    components: {Menu: Navigation, Hello},
+    components: {Navigation},
     template: `
     <main id="app">
         <h1>hello world</h1>
