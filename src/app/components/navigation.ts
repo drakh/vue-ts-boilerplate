@@ -1,22 +1,30 @@
 import Vue from "vue";
 
 interface Item {
-    url: string;
+    path: string;
     name: string;
 }
 
 const navItems: Item[] = [
     {
-        url: "/",
+        path: "/",
         name: "Home",
     },
     {
-        url: "/foo",
+        path: "/foo",
         name: "Foo",
     },
     {
-        url: "/bar",
+        path: "/bar",
         name: "Bar",
+    },
+    {
+        path: "/hello",
+        name: "Hello",
+    },
+    {
+        path: "/hello2",
+        name: "Hello 2",
     },
 ];
 
@@ -28,7 +36,7 @@ export const Navigation = Vue.component("navigation", {
     <section class="nav">
         <h2>Navigation</h2>
         <nav>
-            <router-link :to="item.url" v-for="item in navItems">{{item.name}}</router-link>
+            <router-link :to="item.path" v-for="item in navItems">{{item.name}}</router-link>
         </nav>
     </section>`,
 });

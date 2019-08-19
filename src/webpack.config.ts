@@ -3,6 +3,7 @@ import * as webpack from "webpack";
 import * as VueLoaderPlugin from "vue-loader";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const outDir = path.join(__dirname, "../dist");
 const entry = path.join(__dirname, "app/index.ts");
@@ -64,13 +65,13 @@ const config: webpack.Configuration = {
             {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: true,
-                        },
-                    },
-                    // {loader: "vue-style-loader"},
+                    // {
+                    //     loader: MiniCssExtractPlugin.loader,
+                    //     options: {
+                    //         hmr: true,
+                    //     },
+                    // },
+                    {loader: "vue-style-loader"},
                     {loader: "style-loader"},
                     {loader: "css-loader"},
                 ],
@@ -108,7 +109,7 @@ const config: webpack.Configuration = {
     devtool: "source-map",
     mode: "development",
     plugins: [
-        // make sure to include the plugin for the magic
+        new ForkTsCheckerWebpackPlugin(),
         new VueLoaderPlugin.VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].css",

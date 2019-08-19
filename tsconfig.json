@@ -22,7 +22,7 @@
     "sourceMap": false,
     "outDir": "build",
     "rootDir": "src",
-    "jsx": "react",
+    "jsx": "preserve",
     "experimentalDecorators": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
@@ -30,6 +30,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.vue",
     "src/**/*.tsx"
   ],
   "exclude": [
